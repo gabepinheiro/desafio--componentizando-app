@@ -9,18 +9,15 @@ import "./styles/sidebar.scss";
 import "./styles/content.scss";
 
 export function App() {
-  const { movies, genres, selectedGenre, selectedGenreId, onSelectedGenre } =
-    useMovie();
+  const { movies, genres, onSelectedGenre, moviesGenreSelected } = useMovie();
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      <Sidebar
-        genres={genres}
-        onSelectedGenre={onSelectedGenre}
-        selectedGenreId={selectedGenreId}
+      <Sidebar genres={genres} onSelectedGenre={onSelectedGenre} />
+      <Content
+        movies={moviesGenreSelected(movies)}
+        selectedGenre={genres.find((genre) => genre.selected)}
       />
-      <Content movies={movies} selectedGenre={selectedGenre} />
     </div>
   );
 }
-

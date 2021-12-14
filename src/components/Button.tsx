@@ -12,6 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function Button({ iconName, title, selected, ...rest }: ButtonProps) {
+  console.log(selected);
   return (
     <button
       type="button"
@@ -23,4 +24,3 @@ export function Button({ iconName, title, selected, ...rest }: ButtonProps) {
     </button>
   );
 }
-

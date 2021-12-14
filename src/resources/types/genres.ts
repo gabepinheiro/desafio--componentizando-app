@@ -10,4 +10,5 @@ export type GenreProps = {
   id: number;
   name: GenreName;
   title: string;
+  selected: boolean;
 };

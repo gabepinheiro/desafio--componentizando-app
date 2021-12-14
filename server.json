@@ -3,32 +3,38 @@
     {
       "id": 1,
       "name": "action",
-      "title": "Ação"
+      "title": "Ação",
+      "selected": true
     },
     {
       "id": 2,
       "name": "comedy",
-      "title": "Comédia"
+      "title": "Comédia",
+      "selected": false
     },
     {
       "id": 3,
       "name": "documentary",
-      "title": "Documentário"
+      "title": "Documentário",
+      "selected": false
     },
     {
       "id": 4,
       "name": "drama",
-      "title": "Drama"
+      "title": "Drama",
+      "selected": false
     },
     {
       "id": 5,
       "name": "horror",
-      "title": "Terror"
+      "title": "Terror",
+      "selected": false
     },
     {
       "id": 6,
       "name": "family",
-      "title": "Família"
+      "title": "Família",
+      "selected": false
     }
   ],
   "movies": [
@@ -978,3 +984,4 @@
     }
   ]
 }
+

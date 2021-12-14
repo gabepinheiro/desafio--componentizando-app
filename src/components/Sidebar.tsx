@@ -4,14 +4,9 @@ import { Button } from "./Button";
 type SidebarProps = {
   genres: GenreProps[];
   onSelectedGenre: (id: number) => void;
-  selectedGenreId: number;
 };
 
-export function Sidebar({
-  genres,
-  onSelectedGenre,
-  selectedGenreId,
-}: SidebarProps) {
+export function Sidebar({ genres, onSelectedGenre }: SidebarProps) {
   return (
     <nav className="sidebar">
       <span>
@@ -25,11 +20,10 @@ export function Sidebar({
             title={genre.title}
             iconName={genre.name}
             onClick={() => onSelectedGenre(genre.id)}
-            selected={selectedGenreId === genre.id}
+            selected={genre.selected}
           />
         ))}
       </div>
     </nav>
   );
 }
-

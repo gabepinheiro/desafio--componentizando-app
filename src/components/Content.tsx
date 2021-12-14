@@ -2,21 +2,21 @@ import { GenreProps, MovieProps } from "../resources/types";
 import { MovieCard } from "./MovieCard";
 
 type ContentProps = {
-  movies: MovieProps[];
-  selectedGenre: GenreProps;
+  movies?: MovieProps[];
+  selectedGenre?: GenreProps;
 };
 
 export const Content = ({ movies, selectedGenre }: ContentProps) => (
   <div className="container">
     <header>
       <span className="category">
-        Categoria:<span> {selectedGenre.title}</span>
+        Categoria:<span> {selectedGenre?.title}</span>
       </span>
     </header>
 
     <main>
       <div className="movies-list">
-        {movies.map((movie) => (
+        {movies?.map((movie) => (
           <MovieCard
             key={movie.imdbID}
             title={movie.Title}
@@ -29,4 +29,3 @@ export const Content = ({ movies, selectedGenre }: ContentProps) => (
     </main>
   </div>
 );
-

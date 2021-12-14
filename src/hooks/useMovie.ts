@@ -5,14 +5,8 @@ import { GenreProps, MovieProps } from "../resources/types";
 import { api } from "../services/api";
 
 export const useMovie = () => {
-  const [selectedGenreId, setSelectedGenreId] = useState(1);
-
   const [genres, setGenres] = useState<GenreProps[]>([]);
-
   const [movies, setMovies] = useState<MovieProps[]>([]);
-  const [selectedGenre, setSelectedGenre] = useState<GenreProps>(
-    {} as GenreProps
-  );
 
   useEffect(() => {
     api.get<GenreProps[]>("genres").then((response) => {
@@ -21,26 +15,34 @@ export const useMovie = () => {
   }, []);
 
   useEffect(() => {
-    api
-      .get<MovieProps[]>(`movies/?Genre_id=${selectedGenreId}`)
-      .then((response) => {
-        setMovies(response.data);
-      });
-
-    api.get<GenreProps>(`genres/${selectedGenreId}`).then((response) => {
-      setSelectedGenre(response.data);
+    api.get<MovieProps[]>(`movies`).then((response) => {
+      setMovies(response.data);
     });
-  }, [selectedGenreId]);
+  }, []);
 
   function onSelectedGenre(id: number) {
-    setSelectedGenreId(id);
+    setGenres((genres) =>
+      genres.map((genre) => ({
+        ...genre,
+        selected: genre.id === id,
+      }))
+    );
+  }
+
+  function moviesGenreSelected(movies: MovieProps[]) {
+    const genreSelected = genres.find((genre) => genre.selected);
+
+    if (!genreSelected) {
+      return;
+    }
+
+    return movies.filter((movie) => movie.Genre_id === genreSelected.id);
   }
 
   return {
     movies,
     genres,
-    selectedGenre,
     onSelectedGenre,
-    selectedGenreId,
+    moviesGenreSelected,
   };
 };

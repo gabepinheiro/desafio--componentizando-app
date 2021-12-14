@@ -4,6 +4,7 @@ type Rating = {
 };
 
 export type MovieProps = {
+  Genre_id: number;
   imdbID: string;
   Title: string;
   Poster: string;
